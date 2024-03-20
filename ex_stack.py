@@ -19,6 +19,7 @@ class Stack:
     def size(self):
         return len(self.items)
 
+
 stack = Stack()
 list1 = [1, 2, 3, 4, 5]
 
