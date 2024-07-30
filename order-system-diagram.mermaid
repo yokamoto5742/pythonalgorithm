@@ -1,0 +1,30 @@
+graph TD
+    A[クライアント] -->|HTTPリクエスト| B(API Layer: api.py)
+    B -->|データ構造定義| C(Data Layer: schemas.py)
+    
+    subgraph API Layer
+        B --> D{エンドポイント}
+        D -->|GET| E[get_orders]
+        D -->|POST| F[create_order]
+        D -->|GET| G[get_order]
+        D -->|PUT| H[update_order]
+        D -->|DELETE| I[delete_order]
+        D -->|POST| J[cancel_order]
+        D -->|POST| K[pay_order]
+    end
+    
+    subgraph Data Layer
+        C --> L[Size]
+        C --> M[StatusEnum]
+        C --> N[OrderItemSchema]
+        C --> O[CreateOrderSchema]
+        C --> P[GetOrderSchema]
+        C --> Q[GetOrdersSchema]
+    end
+    
+    B -.->|使用| R((将来的なデータベース))
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfb,stroke:#333,stroke-width:2px
+    style R fill:#ddd,stroke:#333,stroke-width:2px,stroke-dasharray: 5, 5
